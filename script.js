@@ -88,12 +88,17 @@ altE[9] = "E) Nenhuma das alternativas";
 
 function next() {
 
-    if(questaoAtual == 10){
-        acertos = verAcertos();
-        questao.innerText = "Você acertou " + acertos + "/10 questões";
+    if(questaoAtual == 1){
+        document.querySelector("#alt4").classList.remove("acertou");
     }
 
-    else if(questaoAtual > 10){
+    if(questaoAtual == 10){
+
+        acertos = verAcertos();
+        questao.innerText = "Você acertou " + acertos + "/10 questões";
+
+        passar.innerText = "Recomeçar";
+
         questaoAtual = 0;
     }
 
@@ -120,8 +125,6 @@ function next() {
 
 function resposta(alternativa) {
 
-
-
     escolhidas.push(alternativa); 
 
     alt1.disabled = true;
@@ -129,6 +132,10 @@ function resposta(alternativa) {
     alt3.disabled = true;
     alt4.disabled = true;
     alt5.disabled = true;
+
+    
+    document.querySelector("#alt4").classList.add("acertou");
+    
 }
 
 function verAcertos(){
@@ -143,6 +150,12 @@ function verAcertos(){
     return acertos;
 }
 
+function certoErrado(){
+    
+    if(questaoAtual == 0){
+        document.querySelector("#alt4").classList.add("acertou");
+    }
 
+}
 
 
