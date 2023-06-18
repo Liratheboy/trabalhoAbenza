@@ -124,8 +124,6 @@ function verAcertos(){
         if(escolhidas[i] == respostaCerta[i])
             acertos++;
     }
-
-    alert(acertos);
 }
 
 
