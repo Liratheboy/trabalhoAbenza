@@ -90,7 +90,14 @@ function next() {
 
     if(questaoAtual == 10){
         acertos = verAcertos();
+        questao.innerText = "Você acertou " + acertos + "/10 questões";
     }
+
+    else if(questaoAtual > 10){
+        questaoAtual = 0;
+    }
+
+    else{
 
     passar.innerText = "Próxima pergunta";
 
@@ -101,7 +108,6 @@ function next() {
     alt5.disabled = false;    
 
     questao.innerText = pergunta[questaoAtual];
-    
     alt1.innerText = altA[questaoAtual];
     alt2.innerText = altB[questaoAtual];
     alt3.innerText = altC[questaoAtual];
@@ -109,14 +115,20 @@ function next() {
     alt5.innerText = altE[questaoAtual];
 
     questaoAtual += 1;
+    }
 }
 
 function resposta(alternativa) {
 
+
+
     escolhidas.push(alternativa); 
 
-    let esconder = document.querySelectorAll(".botao");
-    esconder.disabled = true;
+    alt1.disabled = true;
+    alt2.disabled = true;
+    alt3.disabled = true;
+    alt4.disabled = true;
+    alt5.disabled = true;
 }
 
 function verAcertos(){
@@ -124,6 +136,11 @@ function verAcertos(){
         if(escolhidas[i] == respostaCerta[i])
             acertos++;
     }
+
+    if(acertos == undefined)
+        acertos = 0;
+
+    return acertos;
 }
 
 
