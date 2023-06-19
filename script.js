@@ -88,22 +88,36 @@ altE[9] = "E) Nenhuma das alternativas";
 
 function next() {
 
-    if(questaoAtual == 1){
-        document.querySelector("#alt4").classList.remove("acertou");
+    document.getElementById("alt1").classList.remove("hide");
+    document.getElementById("alt2").classList.remove("hide");
+    document.getElementById("alt3").classList.remove("hide");
+    document.getElementById("alt4").classList.remove("hide");
+    document.getElementById("alt5").classList.remove("hide");
+
+    if(questaoAtual == 0){
+
+        document.querySelector("#elementos").classList.remove("hide");
+        escolhidas = [];
+        acertos = 0;
     }
 
     if(questaoAtual == 10){
 
-        acertos = verAcertos();
-        questao.innerText = "Você acertou " + acertos + "/10 questões";
-
         passar.innerText = "Recomeçar";
+
+        let funAcertos = verAcertos();
+
+        questao.innerText = "Você acertou " + funAcertos + "/10 questões";
+
+        document.querySelector("#elementos").classList.add("hide");
 
         questaoAtual = 0;
     }
 
     else{
 
+    removerResposta();
+           
     passar.innerText = "Próxima pergunta";
 
     alt1.disabled = false;
@@ -120,6 +134,7 @@ function next() {
     alt5.innerText = altE[questaoAtual];
 
     questaoAtual += 1;
+
     }
 }
 
@@ -133,9 +148,7 @@ function resposta(alternativa) {
     alt4.disabled = true;
     alt5.disabled = true;
 
-    
-    document.querySelector("#alt4").classList.add("acertou");
-    
+    verResposta();
 }
 
 function verAcertos(){
@@ -150,12 +163,70 @@ function verAcertos(){
     return acertos;
 }
 
-function certoErrado(){
-    
-    if(questaoAtual == 0){
-        document.querySelector("#alt4").classList.add("acertou");
-    }
+function verResposta(){
 
+    if(questaoAtual == 1)
+        document.querySelector("#alt4").classList.add("acertou");
+
+    else if(questaoAtual == 2)
+        document.querySelector("#alt1").classList.add("acertou");
+    
+    else if(questaoAtual == 3)
+        document.querySelector("#alt5").classList.add("acertou");
+
+    else if(questaoAtual == 4)
+        document.querySelector("#alt3").classList.add("acertou");
+
+    else if(questaoAtual == 5)
+        document.querySelector("#alt2").classList.add("acertou");
+    
+    else if(questaoAtual == 6)
+        document.querySelector("#alt2").classList.add("acertou");
+    
+    else if(questaoAtual == 7)
+        document.querySelector("#alt4").classList.add("acertou");
+
+    else if(questaoAtual == 8)
+        document.querySelector("#alt5").classList.add("acertou");
+
+    else if(questaoAtual == 9)
+        document.querySelector("#alt3").classList.add("acertou");
+
+    else if(questaoAtual == 10)
+        document.querySelector("#alt2").classList.add("acertou");
+}
+
+function removerResposta(){
+
+    if(questaoAtual == 1)
+        document.querySelector("#alt4").classList.remove("acertou");
+
+    else if(questaoAtual == 2)
+        document.querySelector("#alt1").classList.remove("acertou");
+
+    else if(questaoAtual == 3)
+        document.querySelector("#alt5").classList.remove("acertou");
+
+    else if(questaoAtual == 4)
+        document.querySelector("#alt3").classList.remove("acertou");
+
+    else if(questaoAtual == 5)
+        document.querySelector("#alt2").classList.remove("acertou");
+
+    else if(questaoAtual == 6)
+        document.querySelector("#alt2").classList.remove("acertou");
+
+    else if(questaoAtual == 7)
+        document.querySelector("#alt4").classList.remove("acertou");
+
+    else if(questaoAtual == 8)
+        document.querySelector("#alt5").classList.remove("acertou");
+
+    else if(questaoAtual == 9)
+        document.querySelector("#alt3").classList.remove("acertou");
+
+    else if(questaoAtual == 0)
+        document.querySelector("#alt2").classList.remove("acertou");
 }
 
 
